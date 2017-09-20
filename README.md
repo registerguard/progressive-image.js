@@ -1,3 +1,19 @@
+# Fork changes
+
+### RD 9/20/17
+
+* Remove convoluted demo page
+* Create example index.html that uses images in img directory
+* Add prefixing to CSS properties that need it
+* Remove CSS zoom on load
+
+# Other notes
+
+* Tested on all major browsers and working correctly
+  * With the exception of the blur in IE, but this was expected --- images still load fine
+
+---
+
 # progressive-image.js
 
 A lazy-loading progressive image system similar to those seen on  [Facebook](https://code.facebook.com/posts/991252547593574/the-technology-behind-preview-photos/) and [Medium](https://jmperezperez.com/medium-image-progressive-loading-placeholder/). A very small, blurred image is replaced with the full-resolution equivalent when the element is scrolled into view.
