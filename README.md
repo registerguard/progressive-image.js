@@ -12,6 +12,12 @@
 * Tested on all major browsers and working correctly
   * With the exception of the blur in IE, but this was expected --- images still load fine
 
+### RD 10/6/17
+
+* Added GA
+* Extended load to 600px below screen height
+* Now using global `storyMeta` var to set GA stuff
+
 ---
 
 # progressive-image.js

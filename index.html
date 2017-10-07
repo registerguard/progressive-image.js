@@ -42,42 +42,6 @@
 			}
 		</style>
 		
-		<script>
-			
-			function sendga(pct=""){
-				//var ga_dimension1 = "#($zstrip(##class(csp.rg.assets.methods.story).byline(gStory), "<>W"))#";
-				var ga_dimension1 = "Rob Denton";
-				//var ga_dimension2 = "#(gStory.%Id())#";
-				var ga_dimension2 = "99999999";
-				//var ga_dimension3 = "#(##class(dt.cms.support.Rules).formatDateTime(##class(csp.rg.assets.methods.story).cmsPubTracking(gStory), 5, 4, 0))#";
-				var ga_dimension3 = "Sep 29, 2017, 10:22pm";
-				//var ga_dimension4 = "#(##class(csp.rg.assets.methods.story).newuri(gStory))#";
-				var ga_dimension4 = "http://rdenton.local/github/registerguard/progressive-image.js/";
-				//var ga_dimension5 = "#(##class(%CSP.Page).EscapeHTML(##class(csp.rg.assets.methods.string).stripReturns(##class(csp.rg.assets.methods.story).headline(gStory)," ")))#";
-				var ga_dimension5 = "This is a test";
-				//var ga_dimension6 = "#(##class(csp.rg.assets.methods.ads).oxct(cats("subcategory")))#";
-				var ga_dimension6 = "38029";
-				var ga_dimension7 = "News Gallery";
-				// Fix empty byline
-				if (ga_dimension1 === ""){
-					ga_dimension1 = "No byline";
-				}
-				ga('send','pageview',{
-					'dimension1': ga_dimension1,
-					'dimension2': ga_dimension2,
-					'dimension3': ga_dimension3,
-					//'dimension4': 'http://registerguard.com' + ga_dimension4,
-					'dimension4': ga_dimension4,
-					'dimension5': ga_dimension5,
-					'dimension6': ga_dimension6,
-					'dimension7': ga_dimension7,
-					'dimension8': pct
-				});
-				ga('send', 'event', 'image', 'load', 'prog');
-			}
-			
-		</script>
-		
 	</head>
 	<body>
 		
@@ -140,7 +104,22 @@
 			</div>		
 		</section><!-- /#wrapper -->
 		
-		
+		<script>
+			
+			var storyMeta = {};
+			storyMeta["d1"] = "Author";
+			storyMeta["d2"] = "99999999";
+			storyMeta["d3"] = "Sep 29, 2017, 10:22pm";
+			storyMeta["d4"] = "http://rdenton.local/github/registerguard/progressive-image.js/";
+			storyMeta["d5"] = "This is a test headline";
+			storyMeta["d6"] = "38029";
+			storyMeta["d7"] = "News Gallery";
+			// Fix empty byline
+			if (storyMeta["d1"] === ""){
+				storyMeta["d1"] = "No byline";
+			}
+			
+		</script>
 		
 		<!-- [BEGIN] Prog -->
 		<script src="js/progressive-image.js"></script>

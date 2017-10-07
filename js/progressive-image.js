@@ -1,6 +1,24 @@
 // progressive-image.js
 if (window.addEventListener && window.requestAnimationFrame && document.getElementsByClassName) {
 	window.addEventListener('load', function() {
+		
+		// send ga
+		function sendGA(pct){
+			if (typeof storyMeta != 'undefined'){
+				ga('send','pageview',{
+					'dimension1': storyMeta.d1,
+					'dimension2': storyMeta.d2,
+					'dimension3': storyMeta.d3,
+					'dimension4': storyMeta.d4,
+					'dimension5': storyMeta.d5,
+					'dimension6': storyMeta.d6,
+					'dimension7': storyMeta.d7,
+					'dimension8': pct
+				});
+				ga('send', 'event', 'image', 'load', 'prog');
+			}
+		}
+		
 		// replace with full image
 		function loadFullImage(item) {
 			// replace image
@@ -31,16 +49,16 @@ if (window.addEventListener && window.requestAnimationFrame && document.getEleme
 			img.className = 'reveal';
 			if (img.complete) { addImg(); }
 			else { img.onload = addImg; }
-			sendga(img.pct);
+			sendGA(img.pct);
 		}
 		// image in view?
 		function inView() {
 			
 			//var wT = window.pageYOffset, wB = wT + window.innerHeight, cRect, pT, pB, p = 0;
-			var wT = window.pageYOffset;
+			var wT = window.pageYOffset,
 			// Add 600 to bottom to load images before they're scrolled to.
-			var wB = wT + window.innerHeight + 600;
-			var cRect, pT, pB, p = 0;
+			wB = wT + window.innerHeight + 600,
+			cRect, pT, pB, p = 0;
 			while (p < pItem.length) {
 				cRect = pItem[p].getBoundingClientRect();
 				pT = wT + cRect.top;
