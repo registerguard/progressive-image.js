@@ -7,7 +7,7 @@
 * Add prefixing to CSS properties that need it
 * Remove CSS zoom on load
 
-# Other notes
+### Other notes
 
 * Tested on all major browsers and working correctly
   * With the exception of the blur in IE, but this was expected --- images still load fine
@@ -17,6 +17,10 @@
 * Added GA
 * Extended load to 600px below screen height
 * Now using global `storyMeta` var to set GA stuff
+
+### RD 10/23/17
+
+* Added working JSON example
 
 ---
 

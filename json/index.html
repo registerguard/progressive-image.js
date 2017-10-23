@@ -1,0 +1,126 @@
+<html>
+	
+	<head>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>50 years of Autzen Stadium [2017]</title>
+		
+		<!-- [BEGIN] Zeppelin -->
+		<link rel="stylesheet" href="http://zeppelin.registerguard.com/prod/0.1.0/20140911/1/styles/zeppelin.min.css">
+		<script src="http://zeppelin.registerguard.com/prod/0.1.0/20140911/1/scripts/zeppelin.min.js"></script>
+		<!-- [END] Zeppelin -->
+		
+		<!-- [BEGIN] Prog -->
+		<!-- <link rel="stylesheet" href="css/progressive-image.min.css"> -->
+		<link rel="stylesheet" href="../css/progressive-image.css">
+		<!-- [END] Prog -->
+		
+		<style>
+			html,body{
+				margin: 0;
+				padding: 0;
+				width: 100%;
+				display: block;
+			}
+			#wrapper{
+				width: 100%;
+				max-width: 980px;
+				margin: 0 auto;
+			}
+			img{
+				width: 100%;
+			}
+			.caption{
+				width: 100%;
+				margin-top: .25em;
+				font: italic .938em/1.19936034 Cambria,Georgia,serif;
+				user-select: all;
+				-moz-user-select: all;
+				-webkit-user-select: all; /* does not work in Safari, use only "none" or "text", or else it will allow to type in the html container*/
+				-ms-user-select: element;
+			}
+		</style>
+		
+	</head>
+	<body>
+		
+		<header id="zeppelin" role="banner" class="z_animated">
+			<h6><a href="http://registerguard.com">The Register-Guard</a></h6>
+			<p>50 years of Autzen Stadium [2017]</p>
+		</header>
+		
+		<div id="wrapper">
+			<div id="sspwrapper"></div>
+		</div><!-- /#wrapper -->
+		
+		<script>
+			
+			// Set meta
+			var storyMeta = {};
+			storyMeta["d1"] = "Author";
+			storyMeta["d2"] = "99999999";
+			storyMeta["d3"] = "Sep 29, 2017, 10:22pm";
+			storyMeta["d4"] = "http://rdenton.local/github/registerguard/progressive-image.js/";
+			storyMeta["d5"] = "This is a test headline";
+			storyMeta["d6"] = "38029";
+			storyMeta["d7"] = "News Gallery";
+			// Fix empty byline
+			if (storyMeta["d1"] === ""){
+				storyMeta["d1"] = "No byline";
+			}
+			
+			// Loop over photos and write HTML
+			function loopit(data){ 
+				var data, html = "",
+				elem = document.getElementById("sspwrapper");
+				var l = Object.keys(data).length;
+				for (i=0;i<l;i++) {
+					html += "<figure class='prog'>"
+					html += 	"<a href='" + data[i].preview + "' data-srcset='" + data[i].preview + " 640w, " + data[i].image + " 990w' data-sizes='100vw' data-pct='" + data[i].byline + "' class='progressive replace'>";
+					html += 		"<img src='" + data[i].thumb + "' alt='image' class='preview' />";
+					html += 	"</a>"
+					html += 	"<figcaption class='caption'>" + data[i].description + "</figcaption>"
+					html += 	"<hr>"
+					html += "</figure>"
+				}
+				elem.innerHTML = html;
+			}
+			
+			// Go make request to SSP API
+			function getURL(sspid){
+				var url = "http://slideshow.registerguard.com/slideshowpro/api/dt/index.php?id=" + sspid,
+				request = new XMLHttpRequest();
+				request.open('GET', url, true);
+				request.onload = function() {
+					if (request.status >= 200 && request.status < 400) {
+						// Success!
+						data = JSON.parse(request.responseText);
+						loopit(data);
+					} else {
+						// We reached our target server, but it returned an error
+						console.log("ERROR: Request status " + request.status);
+					}
+				};
+				request.onerror = function() {
+					// There was a connection error of some sort
+					console.log("ERROR: Connection error?");
+				};
+				request.send();
+			}
+			
+			// Set ID and make call
+			var sspid = "591";
+			getURL(sspid);
+			
+		</script>
+		
+		<!-- [BEGIN] Prog -->
+		<script src="../js/progressive-image.js"></script>
+		<!-- [END] Prog -->
+		
+		<script>(function(r,g,n,e,w,s){r.GoogleAnalyticsObject=e;r[e]||(r[e]=function(){(r[e].q=r[e].q||[]).push(arguments)});r[e].l=+new Date;w=g.createElement(n);s=g.getElementsByTagName(n)[0];w.async=1;w.src='//www.google-analytics.com/analytics.js';s.parentNode.insertBefore(w,s)}(window,document,'script','ga'));ga('create','UA-882065-1','auto');ga('require','displayfeatures');ga('require','linkid','linkid.js');ga('send','pageview',{'dimension1':'Test','dimension2':'99999999','dimension3':'Sep 29, 2017 10:21PM','dimension4':'http://rdenton.local/github/registerguard/progressive-image.js/','dimension5':'This is a test','dimension6':'38029','dimension7':'News Gallery'});</script>
+		
+	</body>
+	
+</html>
